@@ -1,32 +1,40 @@
-# 2nd Rossendale Scout Group & Band — GitHub Pages
+# 2nd Rossendale Scout Group & Band
 
-Static multi-page site for GitHub Pages.
+Vite + React + TypeScript version of the 2nd Rossendale website, designed for GitHub Pages.
 
-## Pages
-- `index.html` — Home
-- `beavers.html` — Beavers
-- `cubs.html` — Cubs
-- `scouts.html` — Scouts
-- `band.html` — Band
-- `contact.html` — Contact
+## Local development
 
-## Brand colour
-The primary brand colour is `#7413dc`, defined as `--brand` near the top of `styles.css`.
-
-## Replacing the logo
-The header currently contains a `.logo-placeholder` element. When your logo is ready, replace:
-
-```html
-<span class="logo-placeholder">LOGO</span>
+```bash
+npm install
+npm run dev
 ```
 
-with something like:
+## Production build
 
-```html
-<img src="assets/logo.png" alt="2nd Rossendale Scout Group and Band" width="52" height="52">
+```bash
+npm run build
 ```
 
-Create an `assets` directory and add the image there.
+Vite writes the deployable site to `dist/`.
 
-## GitHub Pages
-Upload these files to the repository root, then enable GitHub Pages in **Settings → Pages**, using the main branch and root directory.
+## GitHub Pages deployment
+
+1. Create a GitHub repository and push this project to the `main` branch.
+2. Open **Settings → Pages** in GitHub.
+3. Set **Source** to **GitHub Actions**.
+4. Push to `main`. The included `.github/workflows/deploy-pages.yml` builds and deploys the site automatically.
+
+The Vite `base` is set to `./`, so the build works both on a project Pages URL such as `username.github.io/repository/` and with a custom domain.
+
+## Logo
+
+The header currently uses a `LOGO` placeholder in `src/components/Layout.tsx`. Replace it later with an `<img>` referencing an asset placed in `public/`, for example `/logo.svg`.
+
+## Main content
+
+- `src/components/Layout.tsx` — shared header, navigation and footer
+- `src/pages/Home.tsx` — homepage
+- `src/pages/SectionPage.tsx` — shared Beavers/Cubs/Scouts page component
+- `src/pages/Band.tsx` — band page
+- `src/pages/Contact.tsx` — contact page
+- `src/styles.css` — site styling and `#7413dc` brand colour
