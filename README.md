@@ -24,7 +24,7 @@ Vite writes the deployable site to `dist/`.
 3. Set **Source** to **GitHub Actions**.
 4. Push to `main`. The included `.github/workflows/deploy-pages.yml` builds and deploys the site automatically.
 
-The Vite `base` is set to `./`, so the build works both on a project Pages URL such as `username.github.io/repository/` and with a custom domain.
+Routing uses `react-router-dom` (`BrowserRouter`) with clean URLs such as `/beavers` and `/band`. The build copies `index.html` to `404.html` so GitHub Pages serves the app for deep links. The Vite `base` is `/`, which suits a user/organisation Pages site (`*.github.io`) or a custom domain; change it if deploying under a repository sub-path.
 
 ## Logo
 
@@ -32,6 +32,7 @@ The header currently uses a `LOGO` placeholder in `src/components/Layout.tsx`. R
 
 ## Main content
 
+- `src/main.tsx` — router and route definitions
 - `src/components/Layout.tsx` — shared header, navigation and footer
 - `src/pages/Home.tsx` — homepage
 - `src/pages/SectionPage.tsx` — shared Beavers/Cubs/Scouts page component
