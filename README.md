@@ -26,6 +26,10 @@ Vite writes the deployable site to `dist/`.
 
 Routing uses `react-router-dom` (`BrowserRouter`) with clean URLs such as `/beavers` and `/band`. The build copies `index.html` to `404.html` so GitHub Pages serves the app for deep links. The Vite `base` is `/`, which suits a user/organisation Pages site (`*.github.io`) or a custom domain; change it if deploying under a repository sub-path.
 
+## Maintenance / holding page
+
+Setting `VITE_MAINTENANCE=true` at build time renders `src/pages/Maintenance.tsx` instead of the site. Locally, copy `.env.example` to `.env.local` and flip the value. In production, the workflow reads the repository variable `MAINTENANCE_MODE` (**Settings → Secrets and variables → Actions → Variables**); set it to `true` and re-run the deploy to show the holding page, or `false`/unset to go live.
+
 ## Logo
 
 The header currently uses a `LOGO` placeholder in `src/components/Layout.tsx`. Replace it later with an `<img>` referencing an asset placed in `public/`, for example `/logo.svg`.
