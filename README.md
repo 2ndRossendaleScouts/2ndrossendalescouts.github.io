@@ -1,20 +1,41 @@
-# 2nd Rossendale Scout Group & Band — GitHub Pages site
+# 2nd Rossendale Scout Group & Band
 
-A static, responsive recreation of the public information architecture of https://www.2ndrossendalescouts.org.uk/.
+Vite + React + TypeScript version of the 2nd Rossendale website, designed for GitHub Pages.
 
-## Publish on GitHub Pages
+## Local development
 
-1. Create a new GitHub repository.
-2. Upload `index.html`, `styles.css`, `script.js`, and `.nojekyll` to the repository root.
-3. In **Settings → Pages**, choose **Deploy from a branch**.
-4. Select the `main` branch and `/ (root)` folder, then save.
-5. GitHub will provide the public Pages URL.
+```bash
+npm install
+npm run dev
+```
 
-## Before publishing
+## Production build
 
-- Replace the placeholder Support/JustGiving action with the group's current donation link.
-- Add real photos if you have permission to publish them.
-- Add current engagement/news items as required.
-- If you want a custom domain, configure it under GitHub Pages settings and add a `CNAME` file.
+```bash
+npm run build
+```
 
-This version is intentionally static and avoids WordPress-only components, admin notices, broken map embeds, and Facebook-feed errors.
+Vite writes the deployable site to `dist/`.
+
+## GitHub Pages deployment
+
+1. Create a GitHub repository and push this project to the `main` branch.
+2. Open **Settings → Pages** in GitHub.
+3. Set **Source** to **GitHub Actions**.
+4. Push to `main`. The included `.github/workflows/deploy-pages.yml` builds and deploys the site automatically.
+
+Routing uses `react-router-dom` (`BrowserRouter`) with clean URLs such as `/beavers` and `/band`. The build copies `index.html` to `404.html` so GitHub Pages serves the app for deep links. The Vite `base` is `/`, which suits a user/organisation Pages site (`*.github.io`) or a custom domain; change it if deploying under a repository sub-path.
+
+## Logo
+
+The header currently uses a `LOGO` placeholder in `src/components/Layout.tsx`. Replace it later with an `<img>` referencing an asset placed in `public/`, for example `/logo.svg`.
+
+## Main content
+
+- `src/main.tsx` — router and route definitions
+- `src/components/Layout.tsx` — shared header, navigation and footer
+- `src/pages/Home.tsx` — homepage
+- `src/pages/SectionPage.tsx` — shared Beavers/Cubs/Scouts page component
+- `src/pages/Band.tsx` — band page
+- `src/pages/Contact.tsx` — contact page
+- `src/styles.css` — site styling and `#7413dc` brand colour
