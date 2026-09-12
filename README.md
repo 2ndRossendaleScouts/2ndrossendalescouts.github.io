@@ -1,20 +1,32 @@
-# 2nd Rossendale Scout Group & Band — GitHub Pages site
+# 2nd Rossendale Scout Group & Band — GitHub Pages
 
-A static, responsive recreation of the public information architecture of https://www.2ndrossendalescouts.org.uk/.
+Static multi-page site for GitHub Pages.
 
-## Publish on GitHub Pages
+## Pages
+- `index.html` — Home
+- `beavers.html` — Beavers
+- `cubs.html` — Cubs
+- `scouts.html` — Scouts
+- `band.html` — Band
+- `contact.html` — Contact
 
-1. Create a new GitHub repository.
-2. Upload `index.html`, `styles.css`, `script.js`, and `.nojekyll` to the repository root.
-3. In **Settings → Pages**, choose **Deploy from a branch**.
-4. Select the `main` branch and `/ (root)` folder, then save.
-5. GitHub will provide the public Pages URL.
+## Brand colour
+The primary brand colour is `#7413dc`, defined as `--brand` near the top of `styles.css`.
 
-## Before publishing
+## Replacing the logo
+The header currently contains a `.logo-placeholder` element. When your logo is ready, replace:
 
-- Replace the placeholder Support/JustGiving action with the group's current donation link.
-- Add real photos if you have permission to publish them.
-- Add current engagement/news items as required.
-- If you want a custom domain, configure it under GitHub Pages settings and add a `CNAME` file.
+```html
+<span class="logo-placeholder">LOGO</span>
+```
 
-This version is intentionally static and avoids WordPress-only components, admin notices, broken map embeds, and Facebook-feed errors.
+with something like:
+
+```html
+<img src="assets/logo.png" alt="2nd Rossendale Scout Group and Band" width="52" height="52">
+```
+
+Create an `assets` directory and add the image there.
+
+## GitHub Pages
+Upload these files to the repository root, then enable GitHub Pages in **Settings → Pages**, using the main branch and root directory.
