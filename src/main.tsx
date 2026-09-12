@@ -7,10 +7,13 @@ import { Home } from './pages/Home'
 import { SectionPage } from './pages/SectionPage'
 import { Band } from './pages/Band'
 import { Contact } from './pages/Contact'
+import { Maintenance } from './pages/Maintenance'
+
+const maintenanceMode = import.meta.env.VITE_MAINTENANCE === 'true'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    {maintenanceMode ? <Maintenance /> : <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
@@ -22,6 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter>}
   </React.StrictMode>,
 )
